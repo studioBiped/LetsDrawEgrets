@@ -3,9 +3,6 @@ var vid;
 
 var margin = 100;
 var border = [1140 - margin * 2, 760 - margin * 2];
-//var cnv = [1920 / 2, 1080 / 2];
-var camOn = -1;
-var buttonLive;
 
 var birdImgData = [{
   idx: 1,
@@ -83,11 +80,6 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(12);
-  
-  buttonLive = createButton('LIVE');
-  buttonLive.position(10, 10);
-  buttonLive.size(60, 60);
-  buttonLive.mousePressed(toggleLive);
 
   var constraints = {
     video: {
@@ -101,38 +93,15 @@ function setup() {
   capture = createCapture(constraints);
   capture.hide();
 
-
-  vid = createVideo(
-    'vid/fieldRecord.mp4',
-    vidLoad
-  );
-
-  //vid.size(1920, 1080);
-  vid.hide();
-
 }
 
-function toggleLive(){
-  camOn = camOn * -1;
-}
-
-function vidLoad() {
-  vid.loop();
-  vid.volume(0);
-}
 
 function draw() {
   background(0);//, 100, 200);
 
   blendMode(BLEND);
 
-  if (camOn > 0) {
     image(capture, 0, 0, width, width * capture.height / capture.width);
-    //image(capture, 0, 0, height * capture.width / capture.height, height);
-  } else {
-    //image(vid, 0, 0, width, width * vid.height / vid.width);
-	image(vid, 0, 0, height * vid.width / vid.height, height);
-  }
 
   for (var i = 0; i < birdImgData.length; i++) { //Type
     for (var j = 0; j < birdImgData[i].userNum; j++) { //User
