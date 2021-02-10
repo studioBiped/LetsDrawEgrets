@@ -2,7 +2,7 @@ var capture;
 var vid;
 
 var margin = 100;
-var border = [1140 - margin * 2, 760 - margin * 2];
+var border = [1368 - margin * 2, 912 - margin * 2];
 
 var birdImgData = [{
   idx: 1,
