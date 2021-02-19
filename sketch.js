@@ -3,6 +3,7 @@ var vid;
 
 var margin = 100;
 var border = [1368 - margin * 2, 912 - margin * 2];
+var pondBG;
 
 var birdImgData = [{
   idx: 1,
@@ -75,6 +76,8 @@ function preload() {
       }
     }
   }
+  
+  pondBG = loadImage('images/pondBG.png');
 }
 
 function setup() {
@@ -90,8 +93,8 @@ function setup() {
     audio: false
   };
 
-  capture = createCapture(constraints);
-  capture.hide();
+  //capture = createCapture(constraints);
+  //capture.hide();
 
 }
 
@@ -101,7 +104,8 @@ function draw() {
 
   blendMode(BLEND);
 
-    image(capture, 0, 0, width, width * capture.height / capture.width);
+    //image(capture, 0, 0, width, width * capture.height / capture.width);
+	image(pondBG, 0, 0, windowHeight / 1080 * 1920, windowHeight);
 
   for (var i = 0; i < birdImgData.length; i++) { //Type
     for (var j = 0; j < birdImgData[i].userNum; j++) { //User
